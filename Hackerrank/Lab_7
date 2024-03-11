@@ -1,0 +1,164 @@
+## My Child
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    while (T--) {
+        char S[1000000];
+        char A[1000000];
+
+        scanf("%s %s", S, A);
+
+        int n = strlen(S);
+        int m = strlen(A);
+
+        int found = 0;
+
+        for (int i = 0; i <= n - m; i++) {
+            int j;
+            for (j = 0; j < m; j++) {
+                if (S[i + j] != A[j])
+                    break;
+            }
+
+            if (j == m) {
+                found = 1;
+                break;
+            }
+        }
+
+        if (found)
+            printf("Yes\n");
+        else
+            printf("No\n");
+    }
+
+    return 0;
+}
+## Am I Smallest?
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    while (T--) {
+        char S[1000000];
+        scanf("%s", S);
+
+        int n = strlen(S);
+
+        // Find the first occurrence of a character that can be changed
+        int i;
+        for (i = n - 2; i >= 0; i--) {
+            if (S[i] > S[i + 1])
+                break;
+        }
+
+        if (i >= 0) {
+            // Find the rightmost character smaller than S[i]
+            int j;
+            for (j = n - 1; j > i; j--) {
+                if (S[j] < S[i])
+                    break;
+            }
+
+            // Swap S[i] and S[j]
+            char temp = S[i];
+            S[i] = S[j];
+            S[j] = temp;
+
+            // Sort the substring after S[i]
+            for (int k = i + 1; k < n; k++) {
+                for (int l = i + 1; l < n - 1; l++) {
+                    if (S[l] > S[l + 1]) {
+                        char temp = S[l];
+                        S[l] = S[l + 1];
+                        S[l + 1] = temp;
+                    }
+                }
+            }
+
+            printf("Yes\n");
+        } else {
+            printf("No\n");
+        }
+    }
+
+    return 0;
+}
+## Runner Up
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    while (T--) {
+        char S[1000000];
+        scanf("%s", S);
+
+        int count[26] = {0};
+        int n = strlen(S);
+
+        // Count the occurrences of each character
+        for (int i = 0; i < n; i++) {
+            count[S[i] - 'a']++;
+        }
+
+        int max1 = -1;  // Maximum occurrence count
+        int max2 = -1;  // Second maximum occurrence count
+
+        // Find the maximum and second maximum occurrence counts
+        for (int i = 0; i < 26; i++) {
+            if (count[i] > max1) {
+                max2 = max1;
+                max1 = count[i];
+            } else if (count[i] > max2 && count[i] < max1) {
+                max2 = count[i];
+            }
+        }
+
+        char secondMaxChar = -1;  // Second maximum occurring character
+
+        // Find the smallest character with the second maximum occurrence count
+        for (int i = 0; i < 26; i++) {
+            if (count[i] == max2) {
+                secondMaxChar = 'a' + i;
+                break;
+            }
+        }
+
+        if (max2 == 0 || secondMaxChar == -1) {
+            printf("-1\n");
+        } else {
+            printf("%c\n", secondMaxChar);
+        }
+    }
+
+    return 0;
+}
+
+## Eliminate Vowels
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    char a[100];
+    scanf("%s",a);
+    int b = strlen(a);
+    for (int i=0;i<b;i++){
+        if ((a[i]!='a') && (a[i]!='e')&&(a[i]!='o')&&(a[i]!='i')&&(a[i]!='u') && (a[i]!='A') &&(a[i]!='E')&&(a[i]!='O')&&(a[i]!='I')&&(a[i]!='U')){
+        printf("%c",a[i]);
+    }
+        }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
