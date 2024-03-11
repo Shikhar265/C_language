@@ -1,0 +1,244 @@
+## CONSECUTIVE ONES 1
+#include <stdio.h>
+
+int countConsecutiveOnes(int n) {
+    int count = 0;
+    int maxCount = 0;
+
+    while (n > 0) {
+        if (n % 2 == 1) {
+            count++;
+            if (count > maxCount)
+                maxCount = count;
+        } else {
+            count = 0;
+        }
+        n /= 2;
+    }
+
+    return maxCount;
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int maxConsecutiveOnes = countConsecutiveOnes(n);
+
+    printf("%d\n", maxConsecutiveOnes);
+
+    return 0;
+}
+## Print Matrix
+#include<stdio.h>
+int main() {
+    int m, n, i, j;
+
+    // Read dimensions of the matrix
+    scanf("%d %d", &m, &n);
+
+    int matrix[m][n];
+
+    // Read matrix elements
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Print matrix elements
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+## Matrix Sum 5
+#include <stdio.h>
+
+int main() {
+    int m, n, i, j;
+    int sum = 0;
+    long long product = 1;
+
+    // Read dimensions of the matrix
+    scanf("%d %d", &m, &n);
+
+    int matrix[m][n];
+
+    // Read matrix elements
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Calculate sum and product of matrix elements
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            sum += matrix[i][j];
+            product *= matrix[i][j];
+        }
+    }
+
+    // Print sum and product
+    printf("%d %lld\n", sum, product);
+
+    return 0;
+}
+
+##  Row Sum
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int main() {
+    int m, n, i, j;
+
+    // Read dimensions of the matrix
+    scanf("%d %d", &m, &n);
+
+    int matrix[m][n];
+
+    // Read matrix elements
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Calculate sum of elements in each row
+    for (i = 0; i < m; i++) {
+        int rowSum = 0;
+        for (j = 0; j < n; j++) {
+            rowSum += matrix[i][j];
+        }
+        printf("%d ", rowSum);
+    }
+
+    return 0;
+}
+## Matrix Diagonal 1
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int m, n;
+    scanf("%d %d", &m, &n);  // Row size and column size
+
+    if (m != n) {
+        printf("Not square matrix.\n");
+        return 0;
+    }
+
+    int matrix[m][n];
+
+    // Read the matrix elements
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Print the diagonal elements
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i == j) {
+                for (int space = 0; space < 2 * i; space++) {
+                    printf(" ");
+                }
+                printf("%d\n", matrix[i][j]);
+            }
+        }
+    }
+
+    return 0;
+}
+## New Paradise
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);  // Number of locations
+
+    int maxRoutes = 0;
+    int count = 0;
+
+    for (int i = 0; i < n; i++) {
+        int routes;
+        scanf("%d", &routes);
+
+        if (routes > maxRoutes) {
+            maxRoutes = routes;
+            count = 1;
+        } else if (routes == maxRoutes) {
+            count++;
+        }
+    }
+
+    printf("%d\n", count);
+
+    return 0;
+}
+
+## Reduce Salary
+ #include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);  // Number of employees
+
+    int e1 = -1;  // Highest salary
+    int e2 = -1;  // Second highest salary
+
+    for (int i = 0; i < n; i++) {
+        int salary;
+        scanf("%d", &salary);
+
+        if (salary > e1) {
+            e2 = e1;
+            e1 = salary;
+        } else if (salary > e2 && salary < e1) {
+            e2 = salary;
+        }
+    }
+
+    printf("%d %d\n", e1, e2);
+
+    return 0;
+}
+## Finding Lucky Number
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int main() {
+    int n,f=0,len,d;
+    scanf("%d",&n);
+    len = log10(n)+1;
+    for(int i=0;i<len;i++){
+        d = n%10;
+        if (d==3){
+            f = f+1;
+        }
+        if (d==9){
+            f = f+1;
+        }
+        n = n/10;
+    }
+    if (f>=2){
+        printf("Yes");
+    }else{
+        printf("No");
+    }
+    return 0;
+}
