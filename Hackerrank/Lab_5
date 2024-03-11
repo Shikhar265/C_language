@@ -1,0 +1,57 @@
+## Farmer Ramu
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    int n,x,y,i,s,j;
+    scanf("%d",&n);
+        for(int k=1;k<=n;k++)
+        {
+      scanf("%d %d",&x,&y);   
+    int p=x+y;
+    
+    for(i=1;i<p;i++)
+    {
+        s=p+i;  
+        int c=0;  
+        for ( j=1;j<=s;j++) 
+        {
+            if(s%j==0)
+                c++;
+        }
+        if(c==2)
+        { printf("%d\n",i); 
+          break;
+        }
+        s=0;
+        }
+    }return 0;
+}
+## Armstrong number 22
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int main(int argc, char const *argv[])
+{
+    int a,b,c=0,d,e;
+    scanf("%d",&a);
+    b=a;
+    int k = log10(b)+1;
+    for (int i=1;i<=k;i++){
+        d = b%10;
+        e = pow(d,k);
+        c = c+e;
+        b = b/10;
+}
+    if (c==a){
+        printf("Armstrong Number.");
+    }else{
+        printf("Not Armstrong.");
+    }
+    return 0;
+}
